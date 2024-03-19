@@ -6,18 +6,64 @@
     xmlns:core="sap.ui.core"
     core:require="{
         formatter: 'com/myorg/myapp/model/formatter'
-    }">
-
+    }"
+>
     <Page
         title="{i18n>appTitle}"
-        id="page">
-        <content>
-            <List 
-			headerText="{i18n>peopleListTitle}"
-			items="{people>/value}">
-                <StandardListItem title="{people>UserName}" description="{people>FirstName} {people>LastName}" info="{people>Gender}"  />
+        id="page"
+    >
+        <!-- <content>
+            <List
+                headerText="{i18n>peopleListTitle}"
+                items="{people>/value}"
+            >
+                <StandardListItem
+                    title="{people>UserName}"
+                    description="{people>FirstName} {people>LastName}"
+                    info="{people>Gender}"
+                />
             </List>
-        </content>
+        </content> -->
+        <Table items="{product>/}">
+            <columns>
+                <Column width="12em">
+                    <Text text="ID" />
+                </Column>
+                <Column>
+                    <Text text="Title" />
+                </Column>
+                <Column>
+                    <Text text="Price" />
+                </Column>
+                <Column>
+                    <Text text="Description" />
+                </Column>
+                <Column>
+                    <Text text="Category" />
+                </Column>
+                <Column>
+                    <Text text="Rating" />
+                </Column>
+                <Column>
+                    <Text text="Rating Count" />
+                </Column>
+            </columns>
+            <items>
+                <ColumnListItem>
+                    <cells>
+                        <ObjectIdentifier
+                            title="{product>id}"
+                        />
+                        <Text text="{product>title}" />
+                        <Text text="{product>price}" />
+                        <Text text="{product>description}" wrapping="false" class="truncateText" textAlign="Begin"/>
+                         <Text text="{product>category}" />
+                        <Text text="{product>rating/rate}" />
+                        <Text text="{product>rating/count}" />
+                       
+                    </cells>
+                </ColumnListItem>
+            </items>
+        </Table>
     </Page>
-
 </mvc:View>
